@@ -1,118 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>ENG0018 Computer Laboratory 2025/26</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 外部样式示例（可选） -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-  /* 单栏阅读友好排版 */
-  body { background:#fff; font-family: Calibri, Arial, sans-serif; color:#222; line-height:1.6; margin:0; }
-  .page { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
-  header h1 { margin: 8px 0 0; font-size: 28px; }
-  header h2 { margin: 4px 0 0; font-weight: normal; font-size: 18px; color:#555; }
-  hr { border: none; border-top: 1px solid #ccc; margin: 16px 0; }
+  <meta charset="utf-8" />
+  <title>ENG0018 Computer Laboratory 2025/26 — H2 Web Article</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  /* 目录与章节 */
-  .toc { margin: 8px 0 20px; }
-  .toc table { width: 100%; border-collapse: collapse; }
-  .toc th { text-align:left; font-size: 18px; padding: 6px 0; }
-  .toc td a { color:#1a73aa; text-decoration:none; }
-  .toc td a:hover { text-decoration: underline; }
+  <!-- [Step 13] 外部样式示例（可用可不用；教学用） -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-  /* 段落缩进示例（与讲义 p.ex1 一致的思路） */
-  p.ex1 { margin-left: 250px; }
+  <!-- [Steps 7–12, 14] 内部样式：统一排版、表格、美化、隐藏类演示 -->
+  <style>
+    /* 全局排版（单栏） */
+    :root {
+      --text: #222;
+      --muted: #555;
+      --line: #ccc;
+      --bg: #fff;
+      --link: #1a73aa;
+      --tableBand: #fafafa;
+      --tableHead: #f5f7fa;
+      --mono: Consolas, Menlo, Monaco, "Courier New", monospace;
+    }
+    html, body { background: var(--bg); margin: 0; padding: 0; }
+    body { color: var(--text); font-family: Calibri, Arial, sans-serif; line-height: 1.6; }
 
-  /* 通用标题 */
-  h3 { margin: 18px 0 8px; font-size: 20px; }
+    /* 页面容器（单栏） */
+    .page { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
 
-  /* 数据表样式（边框、留白、隔行） */
-  .tb { border-collapse: collapse; width:100%; margin: 8px 0 18px; }
-  .tb th, .tb td { border:1px solid #ccc; padding:8px 10px; text-align:left; }
-  .tb th { background:#f5f7fa; }
-  .tb tr:nth-child(even) { background:#fafafa; }
+    /* 头部（步骤 3–6） */
+    header h1 { margin: 6px 0 0; font-size: 28px; font-weight: 700; }
+    header h2 { margin: 4px 0 10px; font-size: 18px; font-weight: 400; color: var(--muted); }
+    .paper-title { font-family: Calibri, Arial, sans-serif; font-size: 22px; font-weight: 700; margin: 10px 0; }
 
-  /* 参考文献区 */
-  .refs pre { white-space: pre-wrap; font-family: Consolas, Menlo, monospace; background:#f7f7f7; padding:10px; border:1px solid #e5e5e5; }
-</style>
+    /* 分隔线（Step 6） */
+    hr { border: none; border-top: 1px solid var(--line); margin: 14px 0; }
+
+    /* 目录区（Steps 22–23） */
+    .toc { margin: 10px 0 22px; }
+    .toc table { width: 100%; border-collapse: collapse; }
+    .toc th { text-align: left; font-size: 18px; padding: 6px 0; }
+    .toc td { padding: 6px 2px; }
+    .toc a { color: var(--link); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* 段落与缩进类（Steps 11, 17–18） */
+    p.ex1 { margin-left: 250px; } /* p.ex1 左缩进示例 */
+    .lead { color: var(--muted); }
+
+    /* 章节标题（H3 用于 Abstract / Introduction / Analysis / References） */
+    h3 { margin: 18px 0 8px; font-size: 20px; }
+
+    /* 数据表（Steps 24，含边框、留白、隔行底色等） */
+    .tb { border-collapse: collapse; width: 100%; margin: 8px 0 18px; }
+    .tb th, .tb td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; }
+    .tb th { background: var(--tableHead); }
+    .tb tr:nth-child(even) { background: var(--tableBand); }
+
+    /* 参考文献（Step 27，用 pre 保持对齐） */
+    .refs pre {
+      white-space: pre-wrap;
+      font-family: var(--mono);
+      background: #f7f7f7;
+      padding: 10px;
+      border: 1px solid #e5e5e5;
+      margin: 6px 0 0;
+    }
+    .refs a { color: var(--link); text-decoration: none; }
+    .refs a:hover { text-decoration: underline; }
+
+    /* 演示隐藏类（Step 14） */
+    .mySlides { display: none; }
+
+    /* 小屏优化 */
+    @media (max-width: 560px) {
+      p.ex1 { margin-left: 0; }
+    }
+  </style>
 </head>
-<body>
-<div class="page">
-  <header>
-    <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
-    <h2>Student URN: 123456</h2>
-  </header>
+<body style="background-color:#FFFFFF;margin-left:50px;"><!-- [Step 15] 行内样式演示（教学用） -->
+  <div class="page">
 
-  <hr>
-  <h2 style="font-family: Calibri;"><b>Conference paper: Bridge Deck Repairs</b></h2>
-  <hr>
+    <!-- [Steps 3–6] 标题、URN、分隔线与论文题目 -->
+    <header>
+      <h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
+      <h2>Student URN: 123456</h2>
+    </header>
 
-  <!-- 目录（锚点导航） -->
-  <section class="toc">
-    <table>
-      <tr><th>Table of contents</th></tr>
-      <tr><td><a href="#Abstract">Abstract</a></td></tr>
-      <tr><td><a href="#Introduction">Introduction</a></td></tr>
-      <tr><td><a href="#Analysis">Analysis and discussion</a></td></tr>
-      <tr><td><a href="#References">References</a></td></tr>
-    </table>
-  </section>
+    <hr>
+    <h2 class="paper-title"><b>Conference paper: Bridge Deck Repairs</b></h2>
+    <hr>
 
-  <!-- 摘要 -->
-  <h3 id="Abstract">Abstract</h3>
-  <p class="ex1">
-    <pre>
+    <!-- [Steps 22–23] Table of contents（锚点对应到下方的 h3#id） -->
+    <section class="toc">
+      <table>
+        <tr><th>Table of contents</th></tr>
+        <tr><td><a href="#Abstract">Abstract</a></td></tr>
+        <tr><td><a href="#Introduction">Introduction</a></td></tr>
+        <tr><td><a href="#Analysis">Analysis and discussion</a></td></tr>
+        <tr><td><a href="#References">References</a></td></tr>
+      </table>
+    </section>
+
+    <!-- [Steps 16–17] Abstract：带 id 供目录跳转；正文演示 p.ex1 + pre（保留换行/空格） -->
+    <h3 id="Abstract">Abstract</h3>
+    <p class="ex1">
+<pre>
 This is a placeholder abstract for the online article. Keep it concise and informative.
-Students can replace this block with their own abstract content.
-    </pre>
-  </p>
+Students can replace this block with their own abstract content to summarise the paper.
+</pre>
+    </p>
 
-  <!-- 引言 -->
-  <h3 id="Introduction">Introduction</h3>
-  <p>
-    Active Learning (Angluin, 1988; Cohn et al., 1994) … (示例段落，可替换为学生自己的引言内容)
-  </p>
+    <!-- [Steps 18] Introduction：示例文本；与 TOC 锚点一致 -->
+    <h3 id="Introduction">Introduction</h3>
+    <p class="lead">
+      This section briefly introduces the context, objectives, and scope of the study. Replace the
+      placeholder with your own content. Use clear structure and short paragraphs for web reading.
+    </p>
+    <p class="ex1">
+<pre>
+Background — Motivation — Prior art — Contributions
+1) State the problem and why it matters.
+2) Outline your approach and what is new.
+3) Provide a brief map of the remainder of the article.
+</pre>
+    </p>
 
-  <!-- 分析与讨论 + MathML 示例 -->
-  <h3 id="Analysis">Analysis and discussion</h3>
-  <p>Below is a MathML example (quadratic formula snippet):</p>
-  <math xmlns="http://www.w3.org/1998/Math/MathML">
-    <mrow>
-      <mi>x</mi>
-      <mo>=</mo>
-      <mfrac>
-        <mrow>
-          <mo>&#x2212;</mo><mi>b</mi>
-          <mo>&#x00B1;</mo>
-          <msqrt>
-            <msup><mi>b</mi><mn>2</mn></msup>
-            <mo>&#x2212;</mo><mn>4</mn><mi>a</mi><mi>c</mi>
-          </msqrt>
-        </mrow>
-        <mrow><mn>2</mn><mi>a</mi></mrow>
-      </mfrac>
-    </mrow>
-  </math>
+    <!-- [Steps 19–21] Analysis & Discussion，含 MathML 示例 -->
+    <h3 id="Analysis">Analysis and discussion</h3>
+    <p>
+      Below is a minimal MathML example (quadratic formula) showing common tags
+      <code>&lt;mi&gt;</code>, <code>&lt;mn&gt;</code>, <code>&lt;mo&gt;</code>, <code>&lt;msup&gt;</code>, <code>&lt;mfrac&gt;</code>, and
+      <code>&lt;msqrt&gt;</code>.
+    </p>
 
-  <!-- 示例数据表（学生可替换） -->
-  <h3>Example data table</h3>
-  <table class="tb">
-    <tr><th>£ Cost of repairs</th><th>Lifespan of repairs (years)</th></tr>
-    <tr><td>0.7</td><td>2</td></tr>
-    <tr><td>1.2</td><td>5</td></tr>
-    <tr><td>2.0</td><td>10</td></tr>
-  </table>
+    <!-- [Step 21] MathML 示例：x = [-b ± sqrt(b^2 - 4ac)]/(2a) -->
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow>
+        <mi>x</mi>
+        <mo>=</mo>
+        <mfrac>
+          <mrow>
+            <mo>&#x2212;</mo><mi>b</mi>
+            <mo>&#x00B1;</mo>
+            <msqrt>
+              <mrow>
+                <msup><mi>b</mi><mn>2</mn></msup>
+                <mo>&#x2212;</mo>
+                <mn>4</mn><mi>a</mi><mi>c</mi>
+              </mrow>
+            </msqrt>
+          </mrow>
+          <mrow><mn>2</mn><mi>a</mi></mrow>
+        </mfrac>
+      </mrow>
+    </math>
 
-  <!-- 参考文献（外链） -->
-  <h3 id="References">References</h3>
-  <div class="refs">
-    <pre>
+    <!-- [Steps 24] 示例数据表（表格样式已在 .tb 中定义） -->
+    <h3>Example data table</h3>
+    <table class="tb">
+      <tr>
+        <th>£ Cost of repairs</th>
+        <th>Lifespan of repairs (years)</th>
+      </tr>
+      <tr><td>0.7</td><td>2</td></tr>
+      <tr><td>1.2</td><td>5</td></tr>
+      <tr><td>2.0</td><td>10</td></tr>
+    </table>
+
+    <!-- [Steps 25, 27] References：外链到文献/DOI；用 <pre> 保持整齐（教学用） -->
+    <hr>
+    <h3 id="References">References</h3>
+    <div class="refs">
+<pre>
 <a href="https://www.icevirtuallibrary.com/doi/full/10.1680/jbren.21.00034" target="_blank">
-Toshihiko et al. (2023), ICE Virtual Library.
+Toshihiko et al. (2023), ICE Virtual Library. DOI: 10.1680/jbren.21.00034
 </a>
-    </pre>
+<a href="https://www.w3.org/TR/MathML4/" target="_blank">
+W3C MathML 4.0 — Specification (accessed 2025).
+</a>
+</pre>
+    </div>
+
+    <!-- [Step 28] 结束前自检：标题层级、目录跳转、表格样式、MathML 渲染是否正常 -->
   </div>
-</div>
+
+  <!-- （可选）演示隐藏类：不会显示 -->
+  <div class="mySlides">This block is hidden by .mySlides{display:none}</div>
 </body>
 </html>
